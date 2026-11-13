@@ -1,14 +1,170 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Выбор даты и времени</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="page">
-      <!-- Перенесите вашу верстку. Удалите статичные данные. Подключите скрипт -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>КРАФТ БАРБЕРШОП — Выбор даты и времени</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Верхняя шапка сайта как на макете -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo-badge">КРАФТ БАРБЕРШОП</a>
+      <nav class="top-menu" aria-label="Главное меню">
+        <a href="#" class="menu-link">Услуги</a>
+        <a href="#" class="menu-link">Мастера</a>
+        <a href="#" class="menu-link">Контакты</a>
+        <a href="#" class="menu-link">Отзывы</a>
+      </nav>
     </div>
-  </body>
+  </header>
+
+  <!-- Полоса прогресса из 5 шагов с круглыми цифрами -->
+  <section class="stepper-bar" aria-label="Этапы записи">
+    <div class="container stepper-inner">
+      <div class="step-node done">
+        <span class="step-circle">1</span>
+        <span class="step-label">Мастер</span>
+      </div>
+      <span class="step-line"></span>
+
+      <div class="step-node done">
+        <span class="step-circle">2</span>
+        <span class="step-label">Услуга</span>
+      </div>
+      <span class="step-line"></span>
+
+      <div class="step-node active">
+        <span class="step-circle">3</span>
+        <span class="step-label">Дата и время</span>
+      </div>
+      <span class="step-line"></span>
+
+      <div class="step-node">
+        <span class="step-circle">4</span>
+        <span class="step-label">Контакты</span>
+      </div>
+      <span class="step-line"></span>
+
+      <div class="step-node">
+        <span class="step-circle">5</span>
+        <span class="step-label">Готово!</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Основной контент -->
+  <main class="main-content">
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title">Выберите дату и время</h1>
+        <p class="page-subtitle">Мастер: Артём Соколов &bull; Мужская стрижка (60 мин, 2 000 ₽)</p>
+      </div>
+
+      <!-- Двухколоночная сетка: слева календарь, справа слоты времени -->
+      <div class="booking-grid">
+        
+        <!-- Левая карточка: Календарь на месяц -->
+        <section class="card calendar-section" aria-label="Календарь">
+          <div class="calendar-top">
+            <h2 id="calendar-month-title" class="section-title">Ноябрь 2026</h2>
+            <div class="month-controls">
+              <button type="button" id="prev-month-btn" class="arrow-btn" aria-label="Предыдущий месяц">&lsaquo;</button>
+              <button type="button" id="next-month-btn" class="arrow-btn" aria-label="Следующий месяц">&rsaquo;</button>
+            </div>
+          </div>
+
+          <div class="weekdays-row">
+            <span>Пн</span>
+            <span>Вт</span>
+            <span>Ср</span>
+            <span>Чт</span>
+            <span>Пт</span>
+            <span>Сб</span>
+            <span>Вс</span>
+          </div>
+
+          <div id="calendar-days-grid" class="days-grid"></div>
+        </section>
+
+        <!-- Правая карточка: Сетка слотов времени -->
+        <section class="card slots-section" aria-label="Свободное время">
+          <div class="slots-top">
+            <h2 class="section-title">Доступное время</h2>
+            <div class="slots-legend">
+              <span class="legend-tag"><i class="dot free"></i>Свободно</span>
+              <span class="legend-tag"><i class="dot busy"></i>Занято</span>
+            </div>
+          </div>
+
+          <div id="time-slots-grid" class="slots-grid"></div>
+        </section>
+
+      </div>
+
+      <!-- Нижняя панель с выбранной датой и кнопками -->
+      <div class="bottom-bar">
+        <div class="selected-summary">
+          <span class="summary-caption">Выбранное время записи:</span>
+          <strong id="selected-datetime-text" class="summary-value">Загрузка...</strong>
+        </div>
+        <div class="bottom-actions">
+          <a href="#" class="btn-secondary">&larr; Назад</a>
+          <button type="button" id="next-step-btn" class="btn-primary">Далее &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Подвал сайта -->
+   <!-- Подвал сайта как на макете -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Левая колонка: Логотип и слоган -->
+        <div class="footer-col">
+          <span class="footer-logo">КРАФТ БАРБЕРШОП</span>
+          <p class="footer-slogan">МУЖСКИЕ СТРИЖКИ И УХОД ЗА БОРОДОЙ С ХАРАКТЕРОМ</p>
+        </div>
+
+        <!-- Центральная колонка: Контакты -->
+        <div class="footer-col">
+          <h3 class="footer-heading">КОНТАКТЫ</h3>
+          <p class="footer-item">
+            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z"/>
+              <circle cx="12" cy="11" r="2.2"/>
+            </svg>
+            <span>ул. Садовая, 15, Москва</span>
+          </p>
+          <p class="footer-item footer-phone">
+            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+          </p>
+        </div>
+
+        <!-- Правая колонка: Режим работы -->
+        <div class="footer-col">
+          <h3 class="footer-heading">РЕЖИМ РАБОТЫ</h3>
+          <p class="footer-item">Пн–Пт: 9:00 – 21:00</p>
+          <p class="footer-item">Сб–Вс: 10:00 – 19:00</p>
+        </div>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="footer-bottom">
+        <span>&copy; 2026. Все права защищены.</span>
+        <a href="#" class="footer-policy">Политика конфиденциальности</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
 </html>
