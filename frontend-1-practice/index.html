@@ -1,26 +1,201 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Выбор даты и времени</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!--
-      ЗАДАНИЕ
-      ========
-      Сверстать страницу выбора даты и времени по своему макету.
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Крафт Барбершоп — Выбор даты и времени</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-      Пока это только вёрстка. Никакого JavaScript — ни кликов,
-      ни переходов, ни выбора дня. Всё статично.
-
-      Стили пишите в styles.css. Разметку — здесь.
-    -->
-
-    <div class="page">
-      <!-- Начните отсюда. Разметьте шапку, основную область
-           с календарём и слотами, подвал. -->
+  <!-- Верхняя шапка сайта -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#" class="brand-badge">КРАФТ БАРБЕРШОП</a>
+      <nav class="main-nav" aria-label="Основное меню">
+        <a href="#" class="nav-link">Услуги</a>
+        <a href="#" class="nav-link">Мастера</a>
+        <a href="#" class="nav-link">Контакты</a>
+        <a href="#" class="nav-link">Отзывы</a>
+      </nav>
     </div>
-  </body>
+  </header>
+
+  <!-- Полоса прогресса записи -->
+  <section class="stepper-bar" aria-label="Этапы записи">
+    <div class="container stepper-inner">
+      <div class="step-item completed">
+        <span class="step-circle">1</span>
+        <span class="step-text">Мастер</span>
+      </div>
+      <span class="step-line"></span>
+
+      <div class="step-item completed">
+        <span class="step-circle">2</span>
+        <span class="step-text">Услуга</span>
+      </div>
+      <span class="step-line"></span>
+
+      <div class="step-item current">
+        <span class="step-circle">3</span>
+        <span class="step-text">Дата и время</span>
+      </div>
+      <span class="step-line"></span>
+
+      <div class="step-item">
+        <span class="step-circle">4</span>
+        <span class="step-text">Контакты</span>
+      </div>
+      <span class="step-line"></span>
+
+      <div class="step-item">
+        <span class="step-circle">5</span>
+        <span class="step-text">Готово!</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Основная рабочая область -->
+  <main class="booking-main">
+    <div class="container">
+      <h1 class="booking-heading">Выберите дату и время</h1>
+
+      <div class="picker-columns">
+        <!-- Левая карточка: Календарь -->
+        <section class="panel-box calendar-panel" aria-label="Календарь">
+          <div class="calendar-head">
+            <h2 class="panel-heading">Июнь 2025</h2>
+            <div class="calendar-arrows">
+              <button type="button" class="arrow-btn" aria-label="Предыдущий месяц">&lsaquo;</button>
+              <button type="button" class="arrow-btn" aria-label="Следующий месяц">&rsaquo;</button>
+            </div>
+          </div>
+
+          <div class="weekdays-row">
+            <span>Пн</span>
+            <span>Вт</span>
+            <span>Ср</span>
+            <span>Чт</span>
+            <span>Пт</span>
+            <span>Сб</span>
+            <span>Вс</span>
+          </div>
+
+          <div class="dates-matrix">
+            <!-- Неактивные дни предыдущего/следующего месяца -->
+            <button type="button" class="date-cell muted" disabled>26</button>
+            <button type="button" class="date-cell muted" disabled>27</button>
+            <button type="button" class="date-cell muted" disabled>28</button>
+            <button type="button" class="date-cell muted" disabled>29</button>
+            <button type="button" class="date-cell muted" disabled>30</button>
+            <button type="button" class="date-cell muted" disabled>31</button>
+            <button type="button" class="date-cell muted" disabled>1</button>
+
+            <!-- Доступные дни -->
+            <button type="button" class="date-cell">2</button>
+            <button type="button" class="date-cell">3</button>
+            <button type="button" class="date-cell">4</button>
+            <button type="button" class="date-cell">5</button>
+            <button type="button" class="date-cell">6</button>
+            <button type="button" class="date-cell muted" disabled>7</button>
+            <button type="button" class="date-cell muted" disabled>8</button>
+
+            <button type="button" class="date-cell">9</button>
+            <button type="button" class="date-cell">10</button>
+            <button type="button" class="date-cell">11</button>
+            <button type="button" class="date-cell">12</button>
+            <button type="button" class="date-cell">13</button>
+            <button type="button" class="date-cell">14</button>
+            <button type="button" class="date-cell">15</button>
+
+            <button type="button" class="date-cell">16</button>
+            <button type="button" class="date-cell">17</button>
+            <button type="button" class="date-cell active">18</button>
+            <button type="button" class="date-cell">19</button>
+            <button type="button" class="date-cell">20</button>
+            <button type="button" class="date-cell">21</button>
+            <button type="button" class="date-cell">22</button>
+          </div>
+        </section>
+
+        <!-- Правая карточка: Доступное время -->
+        <section class="panel-box time-panel" aria-label="Доступное время">
+          <h2 class="panel-heading">Доступное время</h2>
+
+          <div class="time-slots-grid">
+            <button type="button" class="time-slot">
+              <span class="slot-hour">10:00</span>
+            </button>
+
+            <button type="button" class="time-slot occupied" disabled>
+              <span class="slot-hour">11:00</span>
+              <span class="slot-status">Занято</span>
+            </button>
+
+            <button type="button" class="time-slot">
+              <span class="slot-hour">12:00</span>
+            </button>
+
+            <button type="button" class="time-slot occupied" disabled>
+              <span class="slot-hour">13:00</span>
+              <span class="slot-status">Занято</span>
+            </button>
+
+            <button type="button" class="time-slot">
+              <span class="slot-hour">14:00</span>
+            </button>
+
+            <button type="button" class="time-slot">
+              <span class="slot-hour">15:00</span>
+            </button>
+
+            <button type="button" class="time-slot">
+              <span class="slot-hour">16:00</span>
+            </button>
+
+            <button type="button" class="time-slot">
+              <span class="slot-hour">17:00</span>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Нижняя панель с выбранным временем и кнопкой Далее -->
+      <div class="booking-action-bar">
+        <p class="selected-summary">18 ноября 13:30</p>
+        <button type="button" class="btn-next">Далее</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Тёмный подвал (Footer) -->
+  <footer class="site-bottom">
+    <div class="container">
+      <div class="footer-columns">
+        <div class="footer-brand">
+          <span class="brand-badge light">КРАФТ БАРБЕРШОП</span>
+          <p class="brand-tagline">МУЖСКИЕ СТРИЖКИ И УХОД ЗА БОРОДОЙ С ХАРАКТЕРОМ</p>
+        </div>
+
+        <div class="footer-info">
+          <h3 class="footer-title">КОНТАКТЫ</h3>
+          <p class="footer-line">ул. Садовая, 15, Москва</p>
+          <p class="footer-line phone">+7 (495) 123-45-67</p>
+        </div>
+
+        <div class="footer-info">
+          <h3 class="footer-title">РЕЖИМ РАБОТЫ</h3>
+          <p class="footer-line">Пн-Пт: 9:00 – 21:00</p>
+          <p class="footer-line">Сб-Вс: 10:00 – 19:00</p>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <span>&copy; 2026. Все права защищены.</span>
+        <a href="#" class="legal-link">Политика конфиденциальности</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>
